@@ -6,7 +6,6 @@ import { AboutComponent } from './components/about/about.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,6 @@ import { LogInComponent } from './components/log-in/log-in.component';
     SkillsComponent,
     ExperienceComponent,
     EducationComponent,
-    ProfileComponent,
     ProjectsComponent,
     LogInComponent,
   ],

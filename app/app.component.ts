@@ -9,6 +9,7 @@ import { Educacion } from 'src/educacion';
 
 export class AppComponent {
   title = 'portfolio_ap';
+  
 
   educacion: Educacion[] = [
     new Educacion('Primaria/Secundaria', 'Mariano Moreno', '2006-2016'),

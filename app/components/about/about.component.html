@@ -1,4 +1,32 @@
- 
+   <!-------  profile section  -------->
+   <div class="page-content">
+    <div>
+  <div class="profile-page">
+  <div class="wrapper">
+  <div class="page-header page-header-small" filter-color="green">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/images/cc-bg-1.jpg')"></div>
+    <div class="container">
+      <div class="content-center">
+        <div class="cc-profile-image"><a href="#"><img src="assets/images/anthony.jpg" alt="Image"/></a></div>
+        <div contenteditable="true" class="h2 title" *ngIf="portfolio_persona">{{portfolio_persona.nombre}}</div>
+        <p class="category text-white" *ngIf="portfolio_persona">{{portfolio_persona.titulo}}</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="button-container">
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
 <!-------  about section  -------->
  <div class="section" id="about">
     <div class="container">
@@ -8,7 +36,7 @@
           <div class="card-body">
             <div class="h4 mt-0 title">Sobre mi</div>
 
-            <p *ngIf="miPortfolio"> Hello! I am {{miPortfolio.nombre}} {{miPortfolio.apellido}} .</p>
+            <p *ngIf="portfolio_persona">{{portfolio_persona.sobre_mi}}</p>
             
           </div>
         </div>
@@ -18,23 +46,30 @@
             <div class="h4 mt-0 title">Información básica</div>
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Edad</strong></div>
-              <div class="col-sm-8">22</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.edad}}</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8">test@gmail.com</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.email}}</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Teléfono:</strong></div>
-              <div class="col-sm-8">+54 11-1234567</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.telefono}}</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Ubicación:</strong></div>
-              <div class="col-sm-8">Argentina, Buenos Aires</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.ubicacion}}</div>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Idioma principal:</strong></div>
-              <div class="col-sm-8">Español latino</div>
+              <div contenteditable="true" class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.idioma}}</div>
+
+              <div contenteditable="true">
+                This text can be edited by the user.
+              </div>
+
+              <button type="button" (click)="updateButton()">save</button>
+
             </div>
           </div>
         </div>

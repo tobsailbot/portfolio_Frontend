@@ -7,8 +7,9 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  
 
-  miPortfolio:any;
+  portfolio_persona:any;
   constructor(private portfolioData:PortfolioService) { }
 
   ngOnInit(): void {
@@ -16,15 +17,26 @@ export class AboutComponent implements OnInit {
 
       console.log(data);
       // seleccionar el index del array de datos
-      this.miPortfolio = data[0];
+      this.portfolio_persona = data[0];
 
     });
 
-
-    this.portfolioData.putData().subscribe(data =>{
+    
+    /*this.portfolioData.putData().subscribe(data =>{
       console.log(data);
-    }); 
+    }); */
 
+  }
+
+  updateButton(): void{
+
+    this.portfolioData.putData({
+      "id":1,
+      "nombre": "testeoooxd",
+      }).subscribe(data =>{
+      console.log(data);
+      this.ngOnInit();
+    });
   }
 
 }

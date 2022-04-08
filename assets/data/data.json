@@ -1,20 +1,13 @@
 {
-    "name": "Tobias Pilarche testeo del json data",
-    "information": "esto es un texto de prueba del testeo de la descipcion",
-    sobre_mi,
-    edad,
-    email,
-    telefono,
-    ubicacion,
-    idioma,
-    habilidades,
-    proyectos,
-    experiencia_laboral,
-    educacion,
-    certificaciones,
-    redes_sociales,
-    profile_image,
+    "nombre": "Tobias Pilarche ",
+    "profile_image_url": "https://pbs.twimg.com/profile_images/1079098450118782464/Q-x_5qQ1_400x400.jpg",
+    "redes_sociales": "",
+    "titulo": "",
+    "sobre_mi": "esto es un texto de prueba de la descipcion",
+    "edad": "25",
+    "email": "",
+    "telefono": "",
+    "ubicacion": "",
+    "idioma": ""
     
-
 }
-
