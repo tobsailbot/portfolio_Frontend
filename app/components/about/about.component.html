@@ -7,9 +7,14 @@
     <div class="page-header-image" data-parallax="true" style="background-image: url('assets/images/cc-bg-1.jpg')"></div>
     <div class="container">
       <div class="content-center">
-        <div class="cc-profile-image"><a href="#"><img src="assets/images/anthony.jpg" alt="Image"/></a></div>
-        <div contenteditable="true" class="h2 title" *ngIf="portfolio_persona">{{portfolio_persona.nombre}}</div>
-        <p class="category text-white" *ngIf="portfolio_persona">{{portfolio_persona.titulo}}</p>
+        <div class="cc-profile-image" *ngIf="portfolio_persona"><a href="#"><img src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
+        
+        <div class="h2 title" *ngIf="portfolio_persona && !hide">{{portfolio_persona.nombre}}</div>
+        <input class="h2 title" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="nombre" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.nombre}}/>
+<br>
+        <p class="category text-white" *ngIf="portfolio_persona && !hide">{{portfolio_persona.titulo}}</p>
+        <input class="category text-white" style="background-color: rgba(0, 0, 0, 0.15); border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="titulo" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.titulo}}/>
+
       </div>
     </div>
     <div class="section">
@@ -34,9 +39,10 @@
       <div class="row">
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
-            <div class="h4 mt-0 title">Sobre mi</div>
 
-            <p *ngIf="portfolio_persona">{{portfolio_persona.sobre_mi}}</p>
+            <div class="h4 mt-0 title">Sobre mi</div>
+            <p *ngIf="portfolio_persona && !hide">{{portfolio_persona.sobre_mi}}</p>
+            <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="sobre_mi" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.sobre_mi}}/>
             
           </div>
         </div>
@@ -44,31 +50,40 @@
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
             <div class="h4 mt-0 title">Información básica</div>
+
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Edad</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.edad}}</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.edad}}</div>
+              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="edad" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.edad}}/>
             </div>
+
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.email}}</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.email}}</div>
+              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="email" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.email}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Teléfono:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.telefono}}</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.telefono}}</div>
+              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="telefono" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.telefono}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Ubicación:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.ubicacion}}</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.ubicacion}}</div>
+              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="ubicacion" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.ubicacion}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Idioma principal:</strong></div>
-              <div contenteditable="true" class="col-sm-8" *ngIf="portfolio_persona">{{portfolio_persona.idioma}}</div>
+              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.idioma}}</div>
+              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="idioma" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.idioma}}/>
 
-              <div contenteditable="true">
-                This text can be edited by the user.
-              </div>
+            <div></div>
 
-              <button type="button" (click)="updateButton()">save</button>
+            <br>
+            <br>
+
+              <button class="editBtn" type="button" *ngIf="hide" (click)="updateButton()">Save</button>
+              <button class="editBtn" type="button" *ngIf="!hide" (click)="editVal()">Edit</button>
 
             </div>
           </div>

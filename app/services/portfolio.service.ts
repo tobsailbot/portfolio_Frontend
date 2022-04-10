@@ -9,19 +9,20 @@ export class PortfolioService {
 
   url:string="http://localhost:8080/ver/personas";
   url2:string="http://localhost:8080/editar/persona/0";
-  body = {
+
+  bodyPut = {
   "id":1,
-  "nombre": "fonsoo Pilarcheee",
-  "profile_image_url": "https://pbs.twimg.com/profile_images/1079098450118782464/Q-x_5qQ1_400x400.jpg",
+  "nombre": "",
+  "profile_image_url": "",
   "redes_sociales": "",
-  "titulo": "profesional dumbass",
-  "sobre_mi": "esto es un texto de prueba de la descipcion",
-  "edad": "25",
-  "email": "test@mail.test",
-  "telefono": "123456789",
-  "ubicacion": "Argentina",
-  "idioma": "Español"
-};
+  "titulo": "",
+  "sobre_mi": "",
+  "edad": "",
+  "email": "",
+  "telefono": "",
+  "ubicacion": "",
+  "idioma": ""
+  };
 
   constructor(private http:HttpClient) { }
 

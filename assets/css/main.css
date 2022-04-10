@@ -24,6 +24,19 @@
  * Copyright 2012-2013 Mattia Larentis
  * http://www.apache.org/licenses/LICENSE-2.0
  */
+
+ .editBtn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
@@ -2259,7 +2272,8 @@ p {
     font-size: 1.14em; }
 
 .title {
-  font-weight: 700; }
+  font-weight: 700;
+margin: 0px; }
   .title.title-up {
     text-transform: uppercase; }
     .title.title-up a {
