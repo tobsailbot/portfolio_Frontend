@@ -27,9 +27,6 @@ export class AboutComponent implements OnInit {
       
       this.bodyPut = this.portfolio_persona;
     });
-
-    
-
   }
 
   
@@ -41,8 +38,6 @@ export class AboutComponent implements OnInit {
     const key = event.target.name as string;
     this.bodyPut[key as keyof typeof this.bodyPut] = event.target.value;
     //console.log(this.bodyPut)
-
-    
   }
 
   editVal(){
@@ -56,6 +51,7 @@ export class AboutComponent implements OnInit {
     console.log(this.bodyPut)
     this.portfolioData.putData(
 
+      
 
       this.bodyPut
 
@@ -68,6 +64,11 @@ export class AboutComponent implements OnInit {
       setTimeout('', 5000);
       this.ngOnInit();
     });
+  }
+
+  handleMissingImage(event: Event) {
+    console.log('error', event);
+    alert('No image found');
   }
 
 

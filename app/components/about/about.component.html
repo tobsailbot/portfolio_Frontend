@@ -7,7 +7,9 @@
     <div class="page-header-image" data-parallax="true" style="background-image: url('assets/images/cc-bg-1.jpg')"></div>
     <div class="container">
       <div class="content-center">
-        <div class="cc-profile-image" *ngIf="portfolio_persona"><a href="#"><img src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
+        <div class="cc-profile-image" *ngIf="portfolio_persona && !hide"><a href="#"><img (error)="handleMissingImage($event)" src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
+        <div class="col-sm-6" *ngIf="hide">Enter Image URL:</div>
+        <input class="col-sm-8" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);color: white;" *ngIf="portfolio_persona && hide" type="text" name="profile_image_url" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.profile_image_url}}/>
         
         <div class="h2 title" *ngIf="portfolio_persona && !hide">{{portfolio_persona.nombre}}</div>
         <input class="h2 title" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="nombre" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.nombre}}/>
