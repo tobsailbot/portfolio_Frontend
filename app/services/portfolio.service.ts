@@ -7,35 +7,35 @@ import { Observable } from 'rxjs';
 })
 export class PortfolioService {
 
-  url:string="http://localhost:8080/ver/personas";
-  url2:string="http://localhost:8080/editar/persona/0";
+  // Persona API
+  persona_url:string="http://localhost:8080/ver/personas";
+  persona_url2:string="http://localhost:8080/editar/persona/0";
 
-  bodyPut = {
-  "id":1,
-  "nombre": "",
-  "profile_image_url": "",
-  "redes_sociales": "",
-  "titulo": "",
-  "sobre_mi": "",
-  "edad": "",
-  "email": "",
-  "telefono": "",
-  "ubicacion": "",
-  "idioma": ""
-  };
+  // Skills API
+  skills_url:string="http://localhost:8080/ver/skill";
+  skills_url2:string="http://localhost:8080/editar/skill/0";
+
 
   constructor(private http:HttpClient) { }
 
   // GET
-  getData():Observable<any>
+  getPersona():Observable<any>
   {
-    return this.http.get(this.url)
+    return this.http.get(this.persona_url) 
   }
 
-  // PUT  
-   putData(body:{}):Observable<any>
+  getSkill():Observable<any>
   {
-      return this.http.put<any>(this.url2 , body)
+    return this.http.get(this.skills_url) 
+  }
+
+
+
+
+  // PUT  
+   putPersona(body:{}):Observable<any>
+  {
+      return this.http.put<any>(this.persona_url2 , body)
       // return this.http.put<any>(this.url2 + "?nombre=Juan&apellido=Perez" ,null) 
   }
   

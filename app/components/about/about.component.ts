@@ -18,10 +18,10 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.portfolioData.getData().subscribe(data =>{
+    this.portfolioData.getPersona().subscribe(data =>{
       
       
-      console.log('Getting data...');
+      console.log('Getting Persona data...');
       // seleccionar el index del array de datos
       this.portfolio_persona = data[0];
       
@@ -49,9 +49,7 @@ export class AboutComponent implements OnInit {
     
     
     console.log(this.bodyPut)
-    this.portfolioData.putData(
-
-      
+    this.portfolioData.putPersona(
 
       this.bodyPut
 

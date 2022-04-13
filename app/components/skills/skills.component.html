@@ -5,26 +5,23 @@
         <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
           <div class="card-body">
 
-                <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-                  <span class="progress-value"style="float: right;">50%</span>
+            <div *ngIf="portfolio_skills">
+
+              <div *ngFor="let item of skills_arr; let indice=index"> {{indice}}
+
+                <div *ngIf="portfolio_skills" class="progress-container progress-primary"><span class="progress-badge">{{item.habilidad}}</span>
+                  <span *ngIf="portfolio_skills" class="progress-value"style="float: right;">{{item.porcentaje}}%</span>
                     <div >
-                      <progress style="width: 100%; height: 20px;color: green;" id="file" max="100" value="50"></progress>
+                      <progress *ngIf="portfolio_skills" style="width: 100%; height: 20px;color: green;" id="file" max="100" value="{{item.porcentaje}}"></progress>
                     </div>
-                </div>
-              
-                <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-                  <span class="progress-value"style="float: right;">10%</span>
-                    <div >
-                      <progress style="width: 100%; height: 20px;color: green;" id="file" max="100" value="10"></progress>
-                    </div>
+                    <button class="editBtn" type="button" (click)="delSkill()">x</button>
+
                 </div>
 
-                <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-                  <span class="progress-value"style="float: right;">10%</span>
-                    <div>
-                      <progress style="width: 100%; height: 20px;color: green;" id="file" max="100" value="10"></progress>
-                    </div>
-                </div>
+              </div>
+
+            </div>
+
 
 
           </div>
