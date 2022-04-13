@@ -1,30 +1,45 @@
 <!-------  skills section  -------->
     <div class="section" id="skill">
+
         <div class="container">
-        <div class="h4 text-center mb-4 title">Habilidades profesionales</div>
+        <div class="h4 text-center mb-4 title">Habilidades profesionales</div> 
         <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+         
           <div class="card-body">
-
             <div *ngIf="portfolio_skills">
-
-              <div *ngFor="let item of skills_arr; let indice=index"> {{indice}}
+              <div *ngFor="let item of skills_arr; let indice=index">
 
                 <div *ngIf="portfolio_skills" class="progress-container progress-primary"><span class="progress-badge">{{item.habilidad}}</span>
                   <span *ngIf="portfolio_skills" class="progress-value"style="float: right;">{{item.porcentaje}}%</span>
                     <div >
                       <progress *ngIf="portfolio_skills" style="width: 100%; height: 20px;color: green;" id="file" max="100" value="{{item.porcentaje}}"></progress>
                     </div>
-                    <button class="editBtn" type="button" (click)="delSkill()">x</button>
+                    <button *ngIf="hide" class="editBtn" type="button" id={{item.id}} value={{item.habilidad}} style="height: fit-content;" (click)="delSkillBtn($event)">x</button>
 
                 </div>
-
               </div>
-
+              
             </div>
+            <div align="right"> 
+              <button  type="button" *ngIf="!hide" style="margin-right: 10px;cursor: pointer;" (click)="editVal()">Edit</button>
+              <button  type="button" *ngIf="hide" style="margin-right: 10px;cursor: pointer;" (click)="updateButton()">Save</button>
+          </div>
 
-
+            <div style="margin-left: 80px;" *ngIf="hide" class="container">
+            <input class="col-sm-4" type="text" style="margin-bottom: 5px" (focusout)="inputHabilidad($event)" onClick="this.select();" value="Ingresar habilidad"/> 
+            <br>
+            <input class="col-sm-4" type="number" style="margin-bottom: 5px" min="1" max="100" (focusout)="inputPorcentaje($event)" onClick="this.select();" value="Ingresar porcentaje"/>
+            <br>
+            <button type="button" style="cursor: pointer;" (click)="addSkillBtn($event)">Add new</button>
+            </div>
+      
+          
 
           </div>
+          
         </div>
+
+                                      
+
         </div>
         </div>

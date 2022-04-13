@@ -13,8 +13,8 @@ export class PortfolioService {
 
   // Skills API
   skills_url:string="http://localhost:8080/ver/skill";
-  skills_url2:string="http://localhost:8080/editar/skill/0";
-
+  skills_url2:string="http://localhost:8080/new/skill";
+  skills_url3:string="http://localhost:8080/delete/skill";
 
   constructor(private http:HttpClient) { }
 
@@ -29,7 +29,16 @@ export class PortfolioService {
     return this.http.get(this.skills_url) 
   }
 
+  // DEL
+  deleteSkill(skill_id:string):Observable<any>
+  {
+    return this.http.delete(this.skills_url3 + "/" + skill_id)
+  }
 
+  // POST
+  postSkill(new_skill:{}):Observable<any>{
+    return this.http.post(this.skills_url2, new_skill)
+  }
 
 
   // PUT  

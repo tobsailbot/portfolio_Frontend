@@ -58,9 +58,9 @@ export class AboutComponent implements OnInit {
       //console.log(data);
 
       // refresh the component
-      this.hide = false;
-      setTimeout('', 5000);
-      this.ngOnInit();
+      
+      setTimeout( () => {this.hide = false; this.ngOnInit(); console.log('Persona updated..!')/*Your Code*/ }, 500 );
+      
     });
   }
 
