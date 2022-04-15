@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PortfolioService {
 
   // Persona API
@@ -16,7 +17,13 @@ export class PortfolioService {
   skills_url2:string="http://localhost:8080/new/skill";
   skills_url3:string="http://localhost:8080/delete/skill";
 
+  // Project API
+  project_url:string="http://localhost:8080/ver/project";
+  project_url2:string="http://localhost:8080/new/project";
+  project_url3:string="http://localhost:8080/delete/project";
+
   constructor(private http:HttpClient) { }
+
 
   // GET
   getPersona():Observable<any>
@@ -29,15 +36,32 @@ export class PortfolioService {
     return this.http.get(this.skills_url) 
   }
 
+  getProj():Observable<any>
+  {
+    return this.http.get(this.project_url) 
+  }
+
+
+
+  // POST
+  postSkill(new_skill:{}):Observable<any>{
+    return this.http.post(this.skills_url2, new_skill)
+  }
+  postProj(new_proj:{}):Observable<any>{
+    return this.http.post(this.project_url2, new_proj)
+  }
+
+
+
   // DEL
   deleteSkill(skill_id:string):Observable<any>
   {
     return this.http.delete(this.skills_url3 + "/" + skill_id)
   }
 
-  // POST
-  postSkill(new_skill:{}):Observable<any>{
-    return this.http.post(this.skills_url2, new_skill)
+  deleteProj(proj_id:string):Observable<any>
+  {
+    return this.http.delete(this.project_url3 + "/" + proj_id)
   }
 
 
