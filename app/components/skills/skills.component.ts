@@ -68,15 +68,12 @@ export class SkillsComponent implements OnInit {
   }
   
 
-
   addSkillBtn(event:any){
 
     //console.log(this.new_skill);
     this.portfolioData.postSkill(this.new_skill).subscribe(data =>{});
     setTimeout( () => { this.ngOnInit(); console.log('Skill added..') }, 200 );
   }
-
-
 
 
   delSkillBtn(event:any){

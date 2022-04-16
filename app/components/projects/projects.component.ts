@@ -43,7 +43,20 @@ export class ProjectsComponent implements OnInit {
 
     }); 
 
-
   }
+
+  
+  delSkillBtn(event:any){
+
+    this.portfolioData.deleteProj(event.target.id).subscribe(data =>{});
+
+    //console.log(event.target.id);
+    //console.log(event.target.title);
+    console.log('Project "' + event.target.value + '" deleted...');
+    //this.skills_arr = [];
+
+    setTimeout( () => { this.ngOnInit(); console.log('Skills updated..')/*Your Code*/ }, 200 );
+  }
+
 
 }
