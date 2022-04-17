@@ -14,10 +14,10 @@ export class ProjectsComponent implements OnInit {
   proj_arr:any = [];
 
   new_proj:any = {
-    "img_url":"premierep or",
-    "link":"prueba",
-    "nombre": "Laburo xd",
-    "tipo" :"testeoo"
+    "img_url":"",
+    "link":"",
+    "nombre": "",
+    "tipo" :""
     };
 
   portfolio_project:any;
@@ -38,11 +38,22 @@ export class ProjectsComponent implements OnInit {
         //console.log(this.skills_arr);
       }
 
-      console.log(this.proj_arr);
       this.portfolio_project = data[0];
 
     }); 
 
+  }
+
+  onInput(event:any){
+    this.new_proj[event.target.name] = event.target.value;
+  }
+
+  uploadProjBtn(){
+      
+      this.portfolioData.postProj(this.new_proj).subscribe(data =>{});
+      console.log('Project "' + this.new_proj.nombre + '" uploaded...');
+      setTimeout( () => { this.ngOnInit(); console.log('Projects updated..') }, 500 );
+      this.ngOnInit();
   }
 
   
@@ -52,10 +63,9 @@ export class ProjectsComponent implements OnInit {
 
     //console.log(event.target.id);
     //console.log(event.target.title);
-    console.log('Project "' + event.target.value + '" deleted...');
     //this.skills_arr = [];
 
-    setTimeout( () => { this.ngOnInit(); console.log('Skills updated..')/*Your Code*/ }, 200 );
+    setTimeout( () => { this.ngOnInit(); console.log('Project "' + event.target.name + '" deleted...');}, 300 );
   }
 
 

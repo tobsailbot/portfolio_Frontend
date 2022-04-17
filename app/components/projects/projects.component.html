@@ -17,7 +17,7 @@
 
 
               <div class="cc-porfolio-image img-raised" *ngFor="let item of proj_arr; let indice=index">
-                <a href="https://facebook.com" target="_blank">
+                <a href={{item.link}} target="_blank">
                   <figure class="cc-effect"><img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src={{item.img_url}} alt="Image"/>
                     <figcaption>
                       <div class="h4">{{item.nombre}}</div>
@@ -25,31 +25,33 @@
                     </figcaption>
                   </figure></a>
 
-                <button *ngIf="!hide" id={{item.id}} style="float: right;margin-top: -50px;margin-right: -40px;" (click)="delSkillBtn($event)">X</button>
+                <button *ngIf="!hide" id={{item.id}} name={{item.nombre}} style="float: right;margin-top: -50px;margin-right: -40px;" (click)="delSkillBtn($event)">X</button>
                 
               </div>
 
               <div class="cc-porfolio-image img-raised" style="padding:10px 0px 30px 20px;">
               <div class="row mt-3">
                 <div class="col-sm-3"><strong >Nombre del proyecto:</strong></div>
-                <input class="col-sm-6" type="text" name="email" onClick="this.select();"/>
+                <input class="col-sm-6" type="text" name="nombre" (focusout)="onInput($event)" onClick="this.select();"  />
               </div>
 
               <div class="row mt-3">
                 <div class="col-sm-3"><strong >Tipo de proyecto:</strong></div>
-                <input class="col-sm-6" type="text" name="telefono" onClick="this.select();"/>
+                <input class="col-sm-6" type="text" name="tipo" onClick="this.select();"(focusout)="onInput($event)" />
               </div>
 
               <div class="row mt-3">
                 <div class="col-sm-3"><strong >Portada (Img_URL):</strong></div>
-                <input class="col-sm-6" type="text" name="ubicacion" onClick="this.select();"/>
+                <input class="col-sm-6" type="text" name="img_url" onClick="this.select();"(focusout)="onInput($event)" />
               </div>
 
               <div class="row mt-3">
                 <div class="col-sm-3"><strong >Link del proyecto (URL):</strong></div>
-                <input class="col-sm-6" type="text" name="ubicacion" onClick="this.select();"/>
+                <input class="col-sm-6" type="text" name="link" onClick="this.select();"(focusout)="onInput($event)" />
               </div>
             </div>
+
+            <button class="btn btn-primary" (click)="uploadProjBtn()">Agregar</button>
 
                   
 
