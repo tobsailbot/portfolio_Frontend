@@ -22,6 +22,13 @@ export class PortfolioService {
   project_url2:string="http://192.168.1.39:8080/new/project";
   project_url3:string="http://192.168.1.39:8080/delete/project";
 
+  // Experience API
+  experience_url:string="http://192.168.1.39:8080/ver/exp";
+  experience_url2:string="http://192.168.1.39:8080/new/exp";
+  experience_url3:string="http://192.168.1.39:8080/delete/exp";
+
+
+  
   constructor(private http:HttpClient) { }
 
 
@@ -41,6 +48,11 @@ export class PortfolioService {
     return this.http.get(this.project_url) 
   }
 
+  getExp():Observable<any>
+  {
+    return this.http.get(this.experience_url) 
+  }
+
 
 
   // POST
@@ -49,6 +61,9 @@ export class PortfolioService {
   }
   postProj(new_proj:{}):Observable<any>{
     return this.http.post(this.project_url2, new_proj)
+  }
+  postExp(new_exp:{}):Observable<any>{
+    return this.http.post(this.experience_url2, new_exp)
   }
 
 
@@ -62,6 +77,11 @@ export class PortfolioService {
   deleteProj(proj_id:string):Observable<any>
   {
     return this.http.delete(this.project_url3 + "/" + proj_id)
+  }
+
+  deleteExp(exp_id:string):Observable<any>
+  {
+    return this.http.delete(this.experience_url3 + "/" + exp_id)
   }
 
 
