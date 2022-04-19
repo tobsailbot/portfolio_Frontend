@@ -26,16 +26,22 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
 
     this.portfolioData.getProj().subscribe(data =>{
-      
+
       console.log('Getting Project data...');
-      // seleccionar el index del array de datos
       
       this.proj_arr = [];
 
+      // por cada elemento del array de datos
+      // seleccionar el index del array de datos
       for (let i in data){ 
-        //console.log(data[i].id);
         this.proj_arr.push(data[i]);
-        //console.log(this.skills_arr);
+        console.log(this.proj_arr.length);
+      }
+
+      // si no hay proyectos, se muestra un mensaje
+      if (this.proj_arr.length === 0){
+        this.hide = true;
+        console.log('No Projects...');
       }
 
       this.portfolio_project = data[0];
@@ -52,20 +58,22 @@ export class ProjectsComponent implements OnInit {
       
       this.portfolioData.postProj(this.new_proj).subscribe(data =>{});
       console.log('Project "' + this.new_proj.nombre + '" uploaded...');
-      setTimeout( () => { this.ngOnInit(); console.log('Projects updated..') }, 500 );
-      this.ngOnInit();
+      setTimeout( () => { this.ngOnInit(); console.log('Projects updated..');this.ngOnInit();
+      this.hide = false; }, 500 );
   }
 
   
   delSkillBtn(event:any){
-
     this.portfolioData.deleteProj(event.target.id).subscribe(data =>{});
-
-    //console.log(event.target.id);
-    //console.log(event.target.title);
-    //this.skills_arr = [];
-
     setTimeout( () => { this.ngOnInit(); console.log('Project "' + event.target.name + '" deleted...');}, 300 );
+  }
+
+  editVal(){
+    this.hide = true;
+  }
+
+  cancelEdit(){
+    this.hide = false;
   }
 
 

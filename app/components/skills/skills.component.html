@@ -20,8 +20,8 @@
               
             </div>
             <div align="right"> 
-              <button  type="button" *ngIf="!hide" style="margin-right: 10px;cursor: pointer;" (click)="editVal()">Edit</button>
-              <button  type="button" *ngIf="hide" style="margin-right: 10px;cursor: pointer;" (click)="updateButton()">Save</button>
+              <button class="btn btn-primary"   type="button" *ngIf="!hide" style="margin-right: 10px;cursor: pointer;" (click)="editVal()">Edit</button>
+              <button class="btn btn-primary"  type="button" *ngIf="hide" style="margin-right: 10px;cursor: pointer;" (click)="updateButton()">Save</button>
           </div>
 
             <div style="margin-left: 80px;" *ngIf="hide" class="container">
@@ -29,7 +29,7 @@
             <br>
             <input class="col-sm-4" type="number" style="margin-bottom: 5px" min="1" max="100" (focusout)="inputPorcentaje($event)" onClick="this.select();" value="Ingresar porcentaje"/>
             <br>
-            <button type="button" style="cursor: pointer;" (click)="addSkillBtn($event)">Add new</button>
+            <button class="btn btn-primary" type="button" style="cursor: pointer;" (click)="addSkillBtn($event)">Add new</button>
             </div>
       
           
