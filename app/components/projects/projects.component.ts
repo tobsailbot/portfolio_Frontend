@@ -35,7 +35,7 @@ export class ProjectsComponent implements OnInit {
       // seleccionar el index del array de datos
       for (let i in data){ 
         this.proj_arr.push(data[i]);
-        console.log(this.proj_arr.length);
+        //console.log(this.proj_arr.length);
       }
 
       // si no hay proyectos, se muestra un mensaje

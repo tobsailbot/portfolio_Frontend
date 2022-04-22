@@ -6,13 +6,14 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css']
 })
+
 export class ExperienceComponent implements OnInit {
 
   hide = false;
 
-  proj_arr:any = [];
+  exp_arr:any = [];
 
-  new_proj:any = {
+  new_exp:any = {
     "img_url":"",
     "link":"",
     "nombre": "",
@@ -24,48 +25,47 @@ export class ExperienceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.portfolioData.getProj().subscribe(data =>{
+    this.portfolioData.getExp().subscribe(data =>{
 
-      console.log('Getting Project data...');
+      console.log('Getting Experience data...');
       
-      this.proj_arr = [];
+      this.exp_arr = [];
 
       // por cada elemento del array de datos
       // seleccionar el index del array de datos
       for (let i in data){ 
-        this.proj_arr.push(data[i]);
-        console.log(this.proj_arr.length);
+        this.exp_arr.push(data[i]);
       }
 
-      // si no hay proyectos, se muestra un mensaje
-      if (this.proj_arr.length === 0){
+      // si no hay experiencias, se muestra un mensaje
+      if (this.exp_arr.length === 0){
         this.hide = true;
-        console.log('No Projects...');
+        console.log('No Experiencia...');
       }
 
       this.portfolio_project = data[0];
-
-    }); 
-
+    });
   }
 
   onInput(event:any){
-    this.new_proj[event.target.name] = event.target.value;
+    this.new_exp[event.target.name] = event.target.value;
   }
 
-  uploadProjBtn(){
-      
-      this.portfolioData.postProj(this.new_proj).subscribe(data =>{});
-      console.log('Project "' + this.new_proj.nombre + '" uploaded...');
-      setTimeout( () => { this.ngOnInit(); console.log('Projects updated..');this.ngOnInit();
+
+  uploadExpBtn(){
+      this.portfolioData.postExp(this.new_exp).subscribe(data =>{});
+      console.log('Experience "' + this.new_exp.nombre + '" uploaded...');
+      setTimeout( () => { this.ngOnInit(); console.log('Experience updated..');this.ngOnInit();
       this.hide = false; }, 500 );
   }
 
-  
-  delSkillBtn(event:any){
-    this.portfolioData.deleteProj(event.target.id).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Project "' + event.target.name + '" deleted...');}, 300 );
+
+  delExpBtn(event:any){
+    this.portfolioData.deleteExp(event.target.id).subscribe(data =>{});
+    setTimeout( () => { this.ngOnInit(); console.log('Experience "' + event.target.name + '" deleted...');}, 300 );
   }
+
+
 
   editVal(){
     this.hide = true;
