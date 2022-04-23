@@ -36,6 +36,9 @@
   cursor: pointer;
 }
 
+::placeholder {
+  color: #aaa;
+}
 
 .bootstrap-switch {
   display: inline-block;

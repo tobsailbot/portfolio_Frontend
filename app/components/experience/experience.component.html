@@ -5,7 +5,7 @@
     <div class="h4 text-center mb-4 title">Experiencia laboral</div>
 
 
-
+<!-------  Experience GET  -------->
     <div class="card" *ngFor="let item of exp_arr; let indice=index">
       <div class="row">
         <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
@@ -21,9 +21,35 @@
           </div>
         </div>
       </div>
+      <button *ngIf="hide" id={{item.id}} style="float: right;margin-top: -5px;margin-right: 0px;" (click)="delExpBtn($event)">X</button>
+    </div>
+    
+<!-------  Experience POST Input  -------->
+    <div class="card" *ngIf="hide" >
+      <div class="row">
+        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+        <div class="card-body cc-experience-header">
+            <p><input class="col-sm-6" type="text" name="desde" placeholder="Desde" (focusout)="onInput($event)" onClick="this.select();"/>
+              <input class="col-sm-6" type="text" name="hasta" placeholder="Hasta" (focusout)="onInput($event)" onClick="this.select();" /></p>
+            
+            <div class="h5"><input class="col-sm-6" type="text" name="titulo" placeholder="Título" (focusout)="onInput($event)" onClick="this.select();" /></div>
+        </div>
+        </div>
+        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+          <div class="card-body">
+            <div class="h5"><input class="col-sm-6" type="text" name="puesto" placeholder="Puesto" (focusout)="onInput($event)" onClick="this.select();" /></div>
+            <p><input class="col-sm-6" type="text" name="descripcion" placeholder="Descripción" (focusout)="onInput($event)" onClick="this.select();" /></p>
+
+            <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="uploadExpBtn()">Agregar</button>
+            <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="cancelEdit()">Cancelar</button>
+
+          </div>
+        </div>
+      </div>
     </div>
 
+    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary" (click)="editVal()">Edit</button>
 
 
-    </div>
-    </div>
+  </div>
+  </div>

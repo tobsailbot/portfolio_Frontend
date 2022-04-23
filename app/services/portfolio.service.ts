@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PortfolioService {
 
   // Portfolio API
-  api_url:string = "http://192.168.1.37:8080/";
+  api_url:string = "http://localhost:8080/";
 
   
   constructor(private http:HttpClient) { }

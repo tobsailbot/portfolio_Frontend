@@ -14,10 +14,11 @@ export class ExperienceComponent implements OnInit {
   exp_arr:any = [];
 
   new_exp:any = {
-    "img_url":"",
-    "link":"",
-    "nombre": "",
-    "tipo" :""
+    "titulo":"",
+    "puesto":"",
+    "desde":"",
+    "hasta":"",
+    "descripcion":""
     };
 
   portfolio_project:any;
@@ -54,7 +55,7 @@ export class ExperienceComponent implements OnInit {
 
   uploadExpBtn(){
       this.portfolioData.postExp(this.new_exp).subscribe(data =>{});
-      console.log('Experience "' + this.new_exp.nombre + '" uploaded...');
+      console.log('Experience uploaded...');
       setTimeout( () => { this.ngOnInit(); console.log('Experience updated..');this.ngOnInit();
       this.hide = false; }, 500 );
   }
@@ -62,7 +63,7 @@ export class ExperienceComponent implements OnInit {
 
   delExpBtn(event:any){
     this.portfolioData.deleteExp(event.target.id).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Experience "' + event.target.name + '" deleted...');}, 300 );
+    setTimeout( () => { this.ngOnInit(); console.log('Experience "' + event.target.titulo + '" deleted...');}, 300 );
   }
 
 
