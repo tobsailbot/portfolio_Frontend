@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { Educacion } from 'src/educacion';
 
 @Component({
   selector: 'app-education',
@@ -9,11 +8,6 @@ import { Educacion } from 'src/educacion';
 })
 export class EducationComponent implements OnInit {
 
-
-  educacion: Educacion[] = [
-    new Educacion('Primaria/Secundaria', 'Mariano Moreno', '2006-2016'),
-    new Educacion('Curso CSS', 'Argentina Programa', '2010-2015')
-  ]
 
   hide = false;
 
