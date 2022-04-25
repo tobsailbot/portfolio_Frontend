@@ -72,7 +72,7 @@ export class SkillsComponent implements OnInit {
 
     //console.log(this.new_skill);
     this.portfolioData.postSkill(this.new_skill).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Skill added..') }, 200 );
+    setTimeout( () => { this.ngOnInit(); console.log('Skill added..');this.hide = false }, 200 );
   }
 
 

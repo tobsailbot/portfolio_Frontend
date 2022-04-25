@@ -1,65 +1,54 @@
 <!-------  Education section ------->
    
-
  <div class="section" id="education">
     <div class="container cc-education">
     <div class="h4 text-center mb-4 title">Educación</div>
 
-    <!-------  Education section
-    <div class="card" *ngFor="let edu of educacion">
+   
+    <div class="card" *ngFor="let item of edu_arr; let indice=index">
       <div class="row">
         <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
           <div class="card-body cc-education-header">
-            <p>{{edu.periodo}}</p>
-            <div class="h5">{{edu.titulo}}</div>
+            <p>{{item.desde}} - {{item.hasta}}</p>
+            <div class="h5">{{item.titulo}}</div>
           </div>
         </div>
         <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
           <div class="card-body">
-            <div class="h5">{{edu.titulo}}</div>
-            <p class="category">{{edu.institucion}}</p>
-            <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+            <p class="category">{{item.institucion}}</p>
+            <p> {{item.descripcion}}</p>
           </div>
         </div>
       </div>
+      <button *ngIf="hide" id={{item.id}} style="float: right;margin-top: -5px;margin-right: 0px;" (click)="delEduBtn($event)">X</button>
     </div>
-    -------->
-    
-    <div class="card">
+
+    <!-------  Education POST Input  -------->
+    <div class="card" *ngIf="hide" >
       <div class="row">
         <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2009 - 2013</p>
-            <div class="h5">Bachelor's Degree</div>
-          </div>
+        <div class="card-body cc-experience-header">
+            <p><input class="col-sm-6" type="text" name="desde" placeholder="Desde" (focusout)="onInput($event)" onClick="this.select();"/>
+              <input class="col-sm-6" type="text" name="hasta" placeholder="Hasta" (focusout)="onInput($event)" onClick="this.select();" /></p>
+            <div class="h5"><input class="col-sm-6" type="text" name="titulo" placeholder="Título" (focusout)="onInput($event)" onClick="this.select();" /></div>
+        </div>
         </div>
         <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
           <div class="card-body">
-            <div class="h5">Bachelor of Computer Science</div>
-            <p class="category">University of Computer Science</p>
-            <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
+            <div class="h5"><input class="col-sm-6" type="text" name="institucion" placeholder="Institucion" (focusout)="onInput($event)" onClick="this.select();" /></div>
+            <p><input class="col-sm-6" type="text" name="descripcion" placeholder="Descripción" (focusout)="onInput($event)" onClick="this.select();" /></p>
+            <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="uploadEduBtn()">Agregar</button>
+            <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="cancelEdit()">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2007 - 2009</p>
-            <div class="h5">High School</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Science and Mathematics</div>
-            <p class="category">School of Secondary board</p>
-            <p>Euismod massa scelerisque suspendisse fermentum habitant vitae ullamcorper magna quam iaculis, tristique sapien taciti mollis interdum sagittis libero nunc inceptos tellus, hendrerit vel eleifend primis lectus quisque cubilia sed mauris. Lacinia porta vestibulum diam integer quisque eros pulvinar curae, curabitur feugiat arcu vivamus parturient aliquet laoreet at, eu etiam pretium molestie ultricies sollicitudin dui.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary" (click)="editVal()">Edit</button>
+
+
+  
+
     </div>
     </div>
     

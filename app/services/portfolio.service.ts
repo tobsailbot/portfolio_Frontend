@@ -36,6 +36,11 @@ export class PortfolioService {
     return this.http.get(this.api_url + "ver/exp");
   }
 
+  getEdu():Observable<any>
+  {
+    return this.http.get(this.api_url + "ver/edu");
+  }
+
 
 
   // POST
@@ -47,6 +52,9 @@ export class PortfolioService {
   }
   postExp(new_exp:{}):Observable<any>{
     return this.http.post(this.api_url + "new/exp" , new_exp)
+  }
+  postEdu(new_edu:{}):Observable<any>{
+    return this.http.post(this.api_url + "new/edu" , new_edu)
   }
 
 
@@ -65,6 +73,11 @@ export class PortfolioService {
   deleteExp(exp_id:string):Observable<any>
   {
     return this.http.delete(this.api_url + "delete/exp/" + exp_id);
+  }
+
+  deleteEdu(edu_id:string):Observable<any>
+  {
+    return this.http.delete(this.api_url + "delete/edu/" + edu_id);
   }
 
 
