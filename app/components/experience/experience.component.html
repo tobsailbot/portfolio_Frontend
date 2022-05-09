@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <button *ngIf="hide" id={{item.id}} style="float: right;margin-top: -5px;margin-right: 0px;" (click)="delExpBtn($event)">X</button>
+      <button class="btn btn-primary erase-btn" *ngIf="hide" id={{item.id}} style="float: right;cursor: pointer;" (click)="delExpBtn($event)"><mat-icon>delete</mat-icon></button>
     </div>
     
 <!-------  Experience POST Input  -------->
@@ -39,13 +39,13 @@
             <div class="h5"><input class="col-sm-6" type="text" name="puesto" placeholder="Puesto" (focusout)="onInput($event)" onClick="this.select();" /></div>
             <p><input class="col-sm-6" type="text" name="descripcion" placeholder="Descripción" (focusout)="onInput($event)" onClick="this.select();" /></p>
             <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="uploadExpBtn()">Agregar</button>
-            <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="cancelEdit()">Cancelar</button>
+            <button style=" margin-left:75%;margin-top: 10px"  class="btn btn-primary cancel-btn" (click)="cancelEdit()">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
 
-    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary" (click)="editVal()">Edit</button>
+    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
 
 
   </div>

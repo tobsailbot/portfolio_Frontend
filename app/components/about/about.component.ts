@@ -69,5 +69,8 @@ export class AboutComponent implements OnInit {
     alert('No image found');
   }
 
+  cancelEdit(){
+    this.hide = false;
+  }
 
 }

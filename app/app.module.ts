@@ -10,6 +10,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { LogInComponent } from './components/log-in/log-in.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

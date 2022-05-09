@@ -8,14 +8,14 @@
     <div class="container">
       <div class="content-center">
         <div class="cc-profile-image" *ngIf="portfolio_persona && !hide"><a href="#"><img (error)="handleMissingImage($event)" src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
-        <div class="col-sm-6" *ngIf="hide">Enter Image URL:</div>
+        <div class="col-sm-6" *ngIf="hide">Imagen perfil URL:</div>
         <input class="col-sm-8" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);color: white;" *ngIf="portfolio_persona && hide" type="text" name="profile_image_url" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.profile_image_url}}/>
         
         <div class="h2 title" *ngIf="portfolio_persona && !hide">{{portfolio_persona.nombre}}</div>
-        <input class="h2 title" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="nombre" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.nombre}}/>
+        <input class="h2 title" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="nombre" placeholder="Nombre" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.nombre}}/>
 <br>
         <p class="category text-white" *ngIf="portfolio_persona && !hide">{{portfolio_persona.titulo}}</p>
-        <input class="category text-white" style="background-color: rgba(0, 0, 0, 0.15); border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="titulo" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.titulo}}/>
+        <input class="category text-white" style="background-color: rgba(0, 0, 0, 0.15); border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="titulo" placeholder="Tituloçççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççç" value={{portfolio_persona.titulo}}/>
 
       </div>
     </div>
@@ -84,8 +84,9 @@
             <br>
             <br>
 
-              <button style=" margin-left:80%;" class="btn btn-primary" type="button" *ngIf="!hide" (click)="editVal()">Edit</button>
-              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary" type="button" *ngIf="hide" (click)="updateButton()">Save</button>
+              <button style=" margin-left:80%;" class="btn btn-primary btn-icon" type="button" *ngIf="!hide" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary" type="button" *ngIf="hide" (click)="updateButton()">Guardar</button>
+              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary cancel-btn" type="button" *ngIf="hide" (click)="cancelEdit()">Cancelar</button>
 
             </div>
           </div>

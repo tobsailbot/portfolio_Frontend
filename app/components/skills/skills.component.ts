@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 
+
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -80,12 +81,12 @@ export class SkillsComponent implements OnInit {
 
     this.portfolioData.deleteSkill(event.target.id).subscribe(data =>{});
 
-    //console.log(event.target.id);
-    //console.log(event.target.title);
+    console.log(event.target.id);
+    console.log(event.target.title);
     console.log('Skill "' + event.target.value + '" deleted...');
-    //this.skills_arr = [];
+    this.skills_arr = [];
 
-    setTimeout( () => { this.ngOnInit(); console.log('Skills updated..')/*Your Code*/ }, 200 );
+    setTimeout( () => { this.ngOnInit(); console.log('Skills updated..') }, 200 );
 
   }
 
@@ -93,7 +94,7 @@ export class SkillsComponent implements OnInit {
     this.hide = true;
   }
 
-  updateButton(){
+  cancelButton(){
     this.hide = false;
   }
 
