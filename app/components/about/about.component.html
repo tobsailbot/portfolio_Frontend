@@ -8,43 +8,67 @@
     <div class="container">
       <div class="content-center">
         <div class="cc-profile-image" *ngIf="portfolio_persona && !hide"><a href="#"><img (error)="handleMissingImage($event)" src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
+        
+        <!-------  Loading image  -------->
+        <div class="cc-profile-image" style="margin-left: -180px; margin-bottom: 200px;" *ngIf="!portfolio_persona" ><a href="#"></a></div>
+        
         <div class="col-sm-6" *ngIf="hide">Imagen perfil URL:</div>
         <input class="col-sm-8" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);color: white;" *ngIf="portfolio_persona && hide" type="text" name="profile_image_url" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.profile_image_url}}/>
-        
+
+
+
         <div class="h2 title" *ngIf="portfolio_persona && !hide">{{portfolio_persona.nombre}}</div>
         <input class="h2 title" style="background-color: rgba(0, 0, 0, 0.15); margin: 10px; border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="nombre" placeholder="Nombre" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.nombre}}/>
-<br>
+        <br>
         <p class="category text-white" *ngIf="portfolio_persona && !hide">{{portfolio_persona.titulo}}</p>
-        <input class="category text-white" style="background-color: rgba(0, 0, 0, 0.15); border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="titulo" placeholder="Tituloçççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççççç" value={{portfolio_persona.titulo}}/>
+        <input class="category text-white" style="background-color: rgba(0, 0, 0, 0.15); border:1px solid rgb(148, 148, 148);" *ngIf="portfolio_persona && hide" type="text" name="titulo" placeholder="Titulo" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.titulo}}/>
 
       </div>
+
+
+
+
     </div>
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Facebook"><i class="fa fa-facebook"></i></a>
-          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Twitter"><i class="fa fa-twitter"></i></a>
-          <a class="btn btn-default btn-round btn-lg btn-icon" href="#" rel="tooltip" title="Instagram"><i class="fa fa-instagram"></i></a>
+
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="https://www.linkedin.com/in/tobias-pilarche-14503214b/?original_referer=&originalSubdomain=ar" target="_blank" rel="tooltip" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="https://github.com/tobsailbot" target="_blank" rel="tooltip" title="Github"><i class="fa fa-github"></i></a>
+          <a class="btn btn-default btn-round btn-lg btn-icon" href="https://youtube.com/tobsa" target="_blank" rel="tooltip" title="Youtube"><i class="fa fa-youtube"></i></a>
+          
         </div>
       </div>
     </div>
   </div>
   </div>
   </div>
-
-
-
-<!-------  about section  -------->
  <div class="section" id="about">
     <div class="container">
-    <div class="card" data-aos="fade-up" data-aos-offset="10">
+
+
+
+    <!-------  Loading Container  -------->
+  <div *ngIf="!portfolio_persona" class='load-container loading'>
+    <div class='img-container'>
+      <div class='img-loader'></div></div>
+    <div class='load-content'>
+      <div class='stripe long-stripe'></div>
+      <div class='stripe medium-stripe'></div>
+      <div class='stripe long-stripe'></div>
+      <div class='stripe long-stripe'></div>
+    </div>
+  </div>
+
+  <!-------  about section  -------->
+    <div class="card" data-aos="fade-up" data-aos-offset="10" *ngIf="portfolio_persona">
       <div class="row">
         <div class="col-lg-6 col-md-12">
           <div class="card-body">
 
             <div class="h4 mt-0 title">Sobre mi</div>
-            <p *ngIf="portfolio_persona && !hide">{{portfolio_persona.sobre_mi}}</p>
-            <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="sobre_mi" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.sobre_mi}}/>
+            <p *ngIf="!hide">{{portfolio_persona.sobre_mi}}</p>
+            <input class="col-sm-8" *ngIf="hide" type="text" name="sobre_mi" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.sobre_mi}}/>
             
           </div>
         </div>
@@ -55,29 +79,29 @@
 
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Edad</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.edad}}</div>
-              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="edad" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.edad}}/>
+              <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.edad}}</div>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="edad" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.edad}}/>
             </div>
 
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.email}}</div>
-              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="email" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.email}}/>
+              <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.email}}</div>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="email" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.email}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Teléfono:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.telefono}}</div>
-              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="telefono" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.telefono}}/>
+              <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.telefono}}</div>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="telefono" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.telefono}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Ubicación:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.ubicacion}}</div>
-              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="ubicacion" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.ubicacion}}/>
+              <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.ubicacion}}</div>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="ubicacion" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.ubicacion}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Idioma principal:</strong></div>
-              <div class="col-sm-8" *ngIf="portfolio_persona && !hide">{{portfolio_persona.idioma}}</div>
-              <input class="col-sm-8" *ngIf="portfolio_persona && hide" type="text" name="idioma" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.idioma}}/>
+              <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.idioma}}</div>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="idioma" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.idioma}}/>
 
             <div></div>
 

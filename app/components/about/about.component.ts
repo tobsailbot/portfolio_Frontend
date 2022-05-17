@@ -20,7 +20,6 @@ export class AboutComponent implements OnInit {
 
     this.portfolioData.getPersona().subscribe(data =>{
       
-      
       console.log('Getting Persona data...');
       // seleccionar el index del array de datos
       this.portfolio_persona = data[0];
@@ -32,12 +31,11 @@ export class AboutComponent implements OnInit {
   
   onKey(event:any): void{
     
-    //console.log(event.target.value);
-    //console.log(event.target.name);
+
     this.bodyPut= this.portfolio_persona;
     const key = event.target.name as string;
     this.bodyPut[key as keyof typeof this.bodyPut] = event.target.value;
-    //console.log(this.bodyPut)
+
   }
 
   editVal(){
@@ -47,20 +45,13 @@ export class AboutComponent implements OnInit {
 
   updateButton(): void{
     
-    
-    console.log(this.bodyPut)
-    this.portfolioData.putPersona(
-
-      this.bodyPut
-
-      // send data to the portfolio.service.ts
-      ).subscribe(data =>{
-      //console.log(data);
-
-      // refresh the component
+    this.portfolioData.putPersona(this.bodyPut).subscribe(data =>{
       
-      setTimeout( () => {this.hide = false; this.ngOnInit(); console.log('Persona updated..!')/*Your Code*/ }, 500 );
-      
+        if (data.status === 200){
+          this.hide = false;
+          console.log('Persona updated...');
+          this.ngOnInit();
+        }     
     });
   }
 

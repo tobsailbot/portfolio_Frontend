@@ -27,6 +27,89 @@
 
 
 
+
+.load-container{
+  display: flex;
+  border: 1px solid #eaecef;
+  height: 200px;
+  background-color: white;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+.img-container {
+  width: 15%;
+  padding: 20px;
+}
+
+.img-loader {
+  border: 1px solid white;
+  width: 100%;
+  height: 100%;
+  background-color: #babbbc;
+}
+
+.load-content {
+  border: 1px solid white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+ justify-content: space-between;
+}
+
+.stripe {
+  border: 1px solid white;
+  height: 20%;
+  background-color: #babbbc;
+}
+
+.small-stripe {
+  width: 40%;
+}
+
+.medium-stripe {
+  width: 70%;
+}
+
+.long-stripe {
+  width: 100%;
+}
+
+.load-container.loading .img-loader, .load-container.loading .stripe {
+  animation: hintloading 2s ease-in-out 0s infinite reverse;
+  -webkit-animation: hintloading 1.5s ease-in-out 0s infinite reverse;
+}
+
+@keyframes hintloading
+{
+  0% {
+    opacity: 0.5;
+  }
+  50%  {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes hintloading
+{
+  0% {
+    opacity: 0.5;
+  }
+  50%  {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+
+
+
 button{
   cursor: pointer;
   z-index: 100;
@@ -5228,9 +5311,6 @@ Created using IcoMoon - icomoon.io
 .cc-profile-image a:hover img {
   transform: scale(1.06, 1.06); }
 
-.cc-profile-image a:hover:before {
-  -webkit-animation: none;
-          animation: none; }
 
 /* Profile Page Social button Style */
 .button-container .btn-default {

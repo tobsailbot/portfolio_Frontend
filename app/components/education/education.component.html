@@ -4,6 +4,20 @@
     <div class="container cc-education">
     <div class="h4 text-center mb-4 title">Educación</div>
 
+
+    <!-------  Loading Container  -------->
+    <div *ngIf="edu_arr == 0" class='load-container loading'>
+      <div class='img-container'>
+        <div class='img-loader'></div></div>
+      <div class='load-content'>
+        <div class='stripe small-stripe'>
+        </div>
+        <div class='stripe medium-stripe'>
+        </div>
+        <div class='stripe long-stripe'></div>
+      </div>
+    </div>
+
    
     <div class="card" *ngFor="let item of edu_arr; let indice=index">
       <div class="row">
@@ -28,6 +42,7 @@
       <div class="row">
         <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
         <div class="card-body cc-experience-header">
+          <br>
             <p><input class="col-sm-6" type="text" name="desde" placeholder="Desde" (focusout)="onInput($event)" onClick="this.select();"/>
               <input class="col-sm-6" type="text" name="hasta" placeholder="Hasta" (focusout)="onInput($event)" onClick="this.select();" /></p>
             <div class="h5"><input class="col-sm-6" type="text" name="titulo" placeholder="Título" (focusout)="onInput($event)" onClick="this.select();" /></div>
@@ -36,6 +51,7 @@
         <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
           <div class="card-body">
             <div class="h5"><input class="col-sm-6" type="text" name="institucion" placeholder="Institucion" (focusout)="onInput($event)" onClick="this.select();" /></div>
+            <br>
             <p><input class="col-sm-6" type="text" name="descripcion" placeholder="Descripción" (focusout)="onInput($event)" onClick="this.select();" /></p>
             <button style=" margin-left:75%;margin-top: 10px;"  class="btn btn-primary" (click)="uploadEduBtn()">Agregar</button>
             <button style=" margin-left:75%;margin-top: 10px"  class="btn btn-primary cancel-btn" (click)="cancelEdit()">Cancelar</button>
@@ -44,7 +60,7 @@
       </div>
     </div>
 
-    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+    <button *ngIf="!hide && edu_arr != 0" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
 
 
   

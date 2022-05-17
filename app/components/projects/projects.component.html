@@ -10,6 +10,18 @@
     </div>
 
     <div class="tab-content gallery mt-5">
+
+    <!-------  Loading Container  -------->
+    <div *ngIf="proj_arr == 0" class='load-container loading'>
+
+      <div class='load-content'>
+        <div class='stripe long-stripe'></div>
+        <div class='stripe medium-stripe'>
+        </div>
+        <div class='stripe long-stripe'></div>
+      </div>
+    </div>
+
       <div class="tab-pane active" id="web-development">
         <div class="ml-auto mr-auto">
           <div class="row">
@@ -24,7 +36,7 @@
                       <p>{{item.tipo}}</p>
                     </figcaption>
                   </figure></a>
-                <button class="btn btn-primary erase-btn" *ngIf="hide" id={{item.id}} name={{item.nombre}} style="float: right;position: relative;top: -80px;right: 20px;" (click)="delSkillBtn($event)"><mat-icon>delete</mat-icon></button>
+                <button class="btn btn-primary erase-btn" *ngIf="hide" id={{item.id}} name={{item.nombre}} style="float: right;position: relative;top: -80px;right: 20px;" (click)="delProjBtn($event)"><mat-icon>delete</mat-icon></button>
               </div>
 
           
@@ -59,56 +71,7 @@
               </div>
             </div>
 
-            <button *ngIf="!hide" style=" margin-left:85%;margin-top: 10px;"  class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
-
-                  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="assets/images/project-2.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Startup Project</div>
-                      <p>Web Development</p>
-                    </figcaption>
-                  </figure></a></div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="assets/images/project-3.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Food Order Project</div>
-                      <p>Web Development</p>
-                    </figcaption>
-                  </figure></a></div>
-
-
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="assets/images/project-4.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Web Advertising Project</div>
-                      <p>Web Development</p>
-                    </figcaption>
-                  </figure></a></div> -->
-
+            <button *ngIf="proj_arr != 0 && !hide" style=" margin-left:85%;margin-top: 10px;"  class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
 
                 </div>
           </div>

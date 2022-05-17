@@ -56,16 +56,25 @@ export class ProjectsComponent implements OnInit {
 
   uploadProjBtn(){
       
-      this.portfolioData.postProj(this.new_proj).subscribe(data =>{});
-      console.log('Project "' + this.new_proj.nombre + '" uploaded...');
-      setTimeout( () => { this.ngOnInit(); console.log('Projects updated..');this.ngOnInit();
-      this.hide = false; }, 500 );
+      this.portfolioData.postProj(this.new_proj).subscribe(data =>{
+
+        if (data.status === 200){ // si el status es OK 200
+            this.ngOnInit();
+            console.log('Project updated.. ' + data.status);
+            this.hide = false;
+        }
+      });
   }
 
   
-  delSkillBtn(event:any){
-    this.portfolioData.deleteProj(event.target.id).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Project "' + event.target.name + '" deleted...');}, 300 );
+  delProjBtn(event:any){
+    this.portfolioData.deleteProj(event.target.id).subscribe(data =>{
+
+      if (data.status === 200){ // si el status es OK 200
+        this.ngOnInit();
+        console.log('Project deleted...');
+      }
+    });
   }
 
   editVal(){

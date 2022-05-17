@@ -28,7 +28,7 @@ export class ExperienceComponent implements OnInit {
 
     this.portfolioData.getExp().subscribe(data =>{
 
-      console.log('Getting Experience data...');
+      console.log('Getting Experiencia data...');
       
       this.exp_arr = [];
 
@@ -54,24 +54,33 @@ export class ExperienceComponent implements OnInit {
 
 
   uploadExpBtn(){
-      this.portfolioData.postExp(this.new_exp).subscribe(data =>{});
-      console.log('Experience uploaded...');
-      setTimeout( () => { this.ngOnInit(); console.log('Experience updated..');this.ngOnInit();
-      this.hide = false; }, 500 );
+      this.portfolioData.postExp(this.new_exp).subscribe(data =>{
+
+        if (data.status === 200){ // si el status es OK 200
+          this.ngOnInit();
+          console.log('Experience updated.. ' + data.status);
+          this.hide = false;
+      }  
+      });
   }
 
 
   delExpBtn(event:any){
-    this.portfolioData.deleteExp(event.target.id).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Experience "' + event.target.titulo + '" deleted...');}, 300 );
-  }
+    this.portfolioData.deleteExp(event.target.id).subscribe(data =>{
 
+      if (data.status === 200){ // si el status es OK 200
+        this.ngOnInit();
+        console.log('Experience deleted.. ' + data.status);
+      }
+    });
+  }
 
 
   editVal(){
     this.hide = true;
   }
 
+  
   cancelEdit(){
     this.hide = false;
   }

@@ -5,6 +5,22 @@
     <div class="h4 text-center mb-4 title">Experiencia laboral</div>
 
 
+<!-------  Loading Container  -------->
+    <div *ngIf="exp_arr == 0" class='load-container loading'>
+      <div class='img-container'>
+        <div class='img-loader'>
+        </div>
+      </div>
+      <div class='load-content'>
+        <div class='stripe small-stripe'>
+        </div>
+        <div class='stripe medium-stripe'>
+        </div>
+        <div class='stripe long-stripe'></div>
+      </div>
+    </div>
+
+
 <!-------  Experience GET  -------->
     <div class="card" *ngFor="let item of exp_arr; let indice=index">
       <div class="row">
@@ -45,7 +61,7 @@
       </div>
     </div>
 
-    <button *ngIf="!hide" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+    <button *ngIf="!hide && exp_arr != 0" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
 
 
   </div>

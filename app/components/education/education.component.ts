@@ -8,7 +8,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 })
 export class EducationComponent implements OnInit {
 
-
+  
   hide = false;
 
   edu_arr:any = [];
@@ -22,7 +22,7 @@ export class EducationComponent implements OnInit {
     };
 
   portfolio_project:any;
-  constructor(private portfolioData:PortfolioService) { }
+  constructor(private portfolioData:PortfolioService) {  }
 
   ngOnInit(): void {
 
@@ -54,16 +54,26 @@ export class EducationComponent implements OnInit {
 
 
   uploadEduBtn(){
-      this.portfolioData.postEdu(this.new_edu).subscribe(data =>{});
-      console.log('Education uploaded...');
-      setTimeout( () => { this.ngOnInit(); console.log('Education updated..');this.ngOnInit();
-      this.hide = false; }, 500 );
-  }
+
+    this.portfolioData.postEdu(this.new_edu).subscribe(data =>{
+
+      if (data.status === 200){ // si el status es OK 200
+          this.ngOnInit();
+          console.log('Education updated.. ' + data.status);
+          this.hide = false;
+      }  
+    });
+  }	
 
 
   delEduBtn(event:any){
-    this.portfolioData.deleteEdu(event.target.id).subscribe(data =>{});
-    setTimeout( () => { this.ngOnInit(); console.log('Education "' + event.target.titulo + '" deleted...');}, 300 );
+    this.portfolioData.deleteEdu(event.target.id).subscribe(data =>{
+
+      if (data.status === 200){ // si el status es OK 200
+        this.ngOnInit();
+        console.log('Education deleted...');
+      }
+    });
   }
 
 

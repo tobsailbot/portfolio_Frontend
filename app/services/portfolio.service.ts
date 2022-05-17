@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PortfolioService {
 
   // Portfolio API
-  api_url:string = "http://localhost:8080/";
+  api_url:string = "https://heroku-argentina.herokuapp.com/";
 
   
   constructor(private http:HttpClient) { }
@@ -45,16 +45,16 @@ export class PortfolioService {
 
   // POST
   postSkill(new_skill:{}):Observable<any>{
-    return this.http.post(this.api_url + "new/skill" , new_skill)
+    return this.http.post(this.api_url + "new/skill" , new_skill, { observe: 'response' })
   }
   postProj(new_proj:{}):Observable<any>{
-    return this.http.post(this.api_url + "new/project" , new_proj)
+    return this.http.post(this.api_url + "new/project" , new_proj, { observe: 'response' })
   }
   postExp(new_exp:{}):Observable<any>{
-    return this.http.post(this.api_url + "new/exp" , new_exp)
+    return this.http.post(this.api_url + "new/exp" , new_exp, { observe: 'response' })
   }
   postEdu(new_edu:{}):Observable<any>{
-    return this.http.post(this.api_url + "new/edu" , new_edu)
+    return this.http.post(this.api_url + "new/edu" , new_edu, { observe: 'response' })
   }
 
 
@@ -62,29 +62,29 @@ export class PortfolioService {
   // DEL
   deleteSkill(skill_id:string):Observable<any>
   {
-    return this.http.delete(this.api_url + "delete/skill/" + skill_id);
+    return this.http.delete(this.api_url + "delete/skill/" + skill_id, { observe: 'response' });
   }
 
   deleteProj(proj_id:string):Observable<any>
   {
-    return this.http.delete(this.api_url + "delete/project/" + proj_id);
+    return this.http.delete(this.api_url + "delete/project/" + proj_id, { observe: 'response' });
   }
 
   deleteExp(exp_id:string):Observable<any>
   {
-    return this.http.delete(this.api_url + "delete/exp/" + exp_id);
+    return this.http.delete(this.api_url + "delete/exp/" + exp_id, { observe: 'response' });
   }
 
   deleteEdu(edu_id:string):Observable<any>
   {
-    return this.http.delete(this.api_url + "delete/edu/" + edu_id);
+    return this.http.delete(this.api_url + "delete/edu/" + edu_id, { observe: 'response' });
   }
 
 
   // PUT  
    putPersona(body:{}):Observable<any>
   {
-      return this.http.put<any>(this.api_url + "editar/persona/0" , body);
+      return this.http.put<any>(this.api_url + "editar/persona/0" , body, { observe: 'response' });
       // return this.http.put<any>(this.url2 + "?nombre=Juan&apellido=Perez" ,null) 
   }
   
