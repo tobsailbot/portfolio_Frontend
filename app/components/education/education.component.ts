@@ -8,6 +8,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 })
 export class EducationComponent implements OnInit {
 
+  data_ok = false;
   
   hide = false;
 
@@ -28,14 +29,18 @@ export class EducationComponent implements OnInit {
 
     this.portfolioData.getEdu().subscribe(data =>{
 
+      if (data.status === 200){ // si la respuesta es correcta
+        this.data_ok = true;
+      }
+
       console.log('Getting Education data...');
       
       this.edu_arr = [];
 
       // por cada elemento del array de datos
       // seleccionar el index del array de datos
-      for (let i in data){ 
-        this.edu_arr.push(data[i]);
+      for (let i in data.body){ 
+        this.edu_arr.push(data.body[i]);
       }
 
       // si no hay Education, se muestra un mensaje
@@ -44,7 +49,7 @@ export class EducationComponent implements OnInit {
         console.log('No Education...');
       }
 
-      this.portfolio_project = data[0];
+      this.portfolio_project = data.body[0];
     });
   }
 

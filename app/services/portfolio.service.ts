@@ -18,27 +18,27 @@ export class PortfolioService {
   // GET
   getPersona():Observable<any>
   {
-    return this.http.get(this.api_url + "ver/personas");
+    return this.http.get(this.api_url + "ver/personas", { observe: 'response' });
   }
 
   getSkill():Observable<any>
   {
-    return this.http.get(this.api_url + "ver/skill"); 
+    return this.http.get(this.api_url + "ver/skill", { observe: 'response' }); 
   }
 
   getProj():Observable<any>
   {
-    return this.http.get(this.api_url + "ver/project");
+    return this.http.get(this.api_url + "ver/project", { observe: 'response' });
   }
 
   getExp():Observable<any>
   {
-    return this.http.get(this.api_url + "ver/exp");
+    return this.http.get(this.api_url + "ver/exp", { observe: 'response' });
   }
 
   getEdu():Observable<any>
   {
-    return this.http.get(this.api_url + "ver/edu");
+    return this.http.get(this.api_url + "ver/edu", { observe: 'response' });
   }
 
 

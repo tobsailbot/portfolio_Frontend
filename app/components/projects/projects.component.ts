@@ -9,6 +9,8 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 
 export class ProjectsComponent implements OnInit {
 
+  data_ok = false;
+
   hide = false;
 
   proj_arr:any = [];
@@ -27,14 +29,18 @@ export class ProjectsComponent implements OnInit {
 
     this.portfolioData.getProj().subscribe(data =>{
 
+      if (data.status === 200){ // si la respuesta es correcta
+        this.data_ok = true;
+      }
+
       console.log('Getting Project data...');
       
       this.proj_arr = [];
 
       // por cada elemento del array de datos
       // seleccionar el index del array de datos
-      for (let i in data){ 
-        this.proj_arr.push(data[i]);
+      for (let i in data.body){ 
+        this.proj_arr.push(data.body[i]);
         //console.log(this.proj_arr.length);
       }
 
@@ -44,7 +50,7 @@ export class ProjectsComponent implements OnInit {
         console.log('No Projects...');
       }
 
-      this.portfolio_project = data[0];
+      this.portfolio_project = data.body[0];
 
     }); 
 

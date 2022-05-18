@@ -9,6 +9,8 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 
 export class SkillsComponent implements OnInit {
 
+  data_ok = false;
+
   hide = false;
 
   skills_arr:any = [];
@@ -26,21 +28,26 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {
 
     this.portfolioData.getSkill().subscribe(data =>{
+
+      if (data.status === 200){ // si la respuesta es correcta
+        this.data_ok = true;
+      }
       
       console.log('Getting Skills data...');
-      // seleccionar el index del array de datos
-      
+
       this.skills_arr = [];
 
-      for (let i in data){ 
-        //console.log(data[i].id);
-        this.skills_arr.push(data[i]);
-        //console.log(this.skills_arr);
+      for (let i in data.body){ // recorrer el array de datos
+        this.skills_arr.push(data.body[i]); 
+      }
+
+      if (this.skills_arr.length === 0){ // si no hay skills
+        this.hide = true;
+        console.log('No Skills...');
       }
 
       //console.log(this.skills_arr);
-      this.portfolio_skills = data[0];
-
+      this.portfolio_skills = data.body[0];
     }); 
   }
 
@@ -99,5 +106,8 @@ export class SkillsComponent implements OnInit {
   cancelButton(){
     this.hide = false;
   }
+
+
+
 
 }

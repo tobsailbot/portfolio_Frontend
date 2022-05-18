@@ -10,6 +10,7 @@ export class AboutComponent implements OnInit {
   
   hide = false;
 
+  data_ok = false;
 
   bodyPut:any = {};
 
@@ -19,11 +20,15 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
 
     this.portfolioData.getPersona().subscribe(data =>{
+
+      if (data.status === 200){ // si la respuesta es correcta
+        this.data_ok = true;
+      }
       
       console.log('Getting Persona data...');
+
       // seleccionar el index del array de datos
-      this.portfolio_persona = data[0];
-      
+      this.portfolio_persona = data.body[0];
       this.bodyPut = this.portfolio_persona;
     });
   }

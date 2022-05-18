@@ -5335,8 +5335,8 @@ Created using IcoMoon - icomoon.io
 
 /* Experience Style */
 .cc-experience .cc-experience-header {
-  padding-top: 60px;
-  padding-right: 0;
+  padding-top: 40px;
+  padding-right: inherit;
   text-align: center;
   color: #fff;
   text-transform: uppercase; }

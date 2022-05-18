@@ -9,6 +9,8 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 
 export class ExperienceComponent implements OnInit {
 
+  data_ok = false;
+
   hide = false;
 
   exp_arr:any = [];
@@ -28,14 +30,18 @@ export class ExperienceComponent implements OnInit {
 
     this.portfolioData.getExp().subscribe(data =>{
 
+      if (data.status === 200){ // si la respuesta es correcta
+        this.data_ok = true;
+      }
+
       console.log('Getting Experiencia data...');
       
       this.exp_arr = [];
 
       // por cada elemento del array de datos
       // seleccionar el index del array de datos
-      for (let i in data){ 
-        this.exp_arr.push(data[i]);
+      for (let i in data.body){ 
+        this.exp_arr.push(data.body[i]);
       }
 
       // si no hay experiencias, se muestra un mensaje
@@ -44,7 +50,7 @@ export class ExperienceComponent implements OnInit {
         console.log('No Experiencia...');
       }
 
-      this.portfolio_project = data[0];
+      this.portfolio_project = data.body[0];
     });
   }
 
