@@ -2134,8 +2134,8 @@ textarea.form-control {
 
 .progress-container {
   position: relative;
-  padding-left: 100px;
-  padding-right: 100px; }
+  padding-left: 60px;
+  padding-right: 80px; }
   .progress-container + .progress-container,
   .progress-container ~ .progress-container {
     margin-top: 15px; }
