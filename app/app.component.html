@@ -1,4 +1,6 @@
+
 <header>
+
 
   <!-------  navigation bar section  -------->
   <div class="profile-page sidebar-collapse">
@@ -15,12 +17,15 @@
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Proyectos</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experiencia</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#education">Educación</a></li>
+            <li class="nav-item" style="margin: auto;"><button class="btn btn-primary" type="button" (click)="loginButton()" >Login</button></li>
+            <li class="nav-item"><mat-icon>how_to_reg</mat-icon></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
 
+  <app-log-in *ngIf="!hide_login"></app-log-in>
 
   <app-about></app-about>
 
@@ -32,7 +37,6 @@
 
   <app-education></app-education>
 
-<!-- <app-log-in></app-log-in> -->
 
 
  <!-------  Footer section  -------->

@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
 export class PortfolioService {
 
   // Portfolio API
-  api_url:string = "https://heroku-argentina.herokuapp.com/";
+  //api_url:string = "https://heroku-argentina.herokuapp.com/";
+  api_url:string = "http://localhost:8080/";
 
-  
+
   constructor(private http:HttpClient) { }
 
 
@@ -39,6 +40,11 @@ export class PortfolioService {
   getEdu():Observable<any>
   {
     return this.http.get(this.api_url + "ver/edu", { observe: 'response' });
+  }
+
+  getLogin():Observable<any>
+  {
+    return this.http.get(this.api_url + "ver/login", { observe: 'response' });
   }
 
 
