@@ -1,6 +1,5 @@
 
-<header>
-
+  <header>
 
   <!-------  navigation bar section  -------->
   <div class="profile-page sidebar-collapse">
@@ -17,15 +16,17 @@
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Proyectos</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experiencia</a></li>
             <li class="nav-item"><a class="nav-link smooth-scroll" href="#education">Educación</a></li>
-            <li class="nav-item" style="margin: auto;"><button class="btn btn-primary" type="button" (click)="loginButton()" >Login</button></li>
-            <li class="nav-item"><mat-icon>how_to_reg</mat-icon></li>
+            <li class="nav-item" style="margin: auto;" *ngIf="!is_user_logged_in"><button class="btn btn-primary" type="button" (click)="loginClick()">Login</button></li>
+            <li class="nav-item" style="margin: auto;" *ngIf="is_user_logged_in"><button class="btn btn-primary" style="padding: 4px;" type="button" title="User Logged in"><mat-icon>how_to_reg</mat-icon></button></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
 
-  <app-log-in *ngIf="!hide_login"></app-log-in>
+  <div class="login-container" *ngIf="login_comp" [@inOutAnimation]>
+      <app-log-in  (loginEvent)="receiveData($event)" ></app-log-in>
+  </div>
 
   <app-about></app-about>
 

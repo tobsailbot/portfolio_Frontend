@@ -1,7 +1,7 @@
 
 <div class="section" id="login">
 
-  <form class="m-5">
+  <form class="m-5" (ngSubmit)="onSubmit($event)">
 
     <div class="container"> 
 
@@ -10,19 +10,22 @@
       <!-- Email input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="form2Example1">Usuario:</label>
-        <input type="text" id="form2Example1" class="form-control" name="user_name" (focusout)="loginInput($event)" />
+        <input type="text" id="user_name" class="form-control"/>
       </div>
-    
+
       <!-- Password input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="form2Example2">Contraseña:</label>
-        <input type="password" id="form2Example2" class="form-control"  name="password" (focusout)="loginInput($event)" />
+        <input type="password" id="password" class="form-control"/>
       </div>
-    
+
       <!-- Submit button -->
-      <button type="button" class="btn btn-primary btn-block mb-4" (click)="loginButton()">Sign in</button>
+      <input type="submit" class="btn btn-primary btn-block mb-4" value="Iniciar sesión">
+
+      <h6 style="color:rgb(97, 97, 97);">{{login_status}}</h6>
 
     </div>
+    
   </form>
 
 </div>

@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 
 export class PortfolioService {
 
+
   // Portfolio API
   //api_url:string = "https://heroku-argentina.herokuapp.com/";
   api_url:string = "http://localhost:8080/";
 
+  // Login status
+  is_logged:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.myMethod$ = this.myMethodSubject.asObservable();
+   }
 
 
   // GET
@@ -91,7 +96,19 @@ export class PortfolioService {
    putPersona(body:{}):Observable<any>
   {
       return this.http.put<any>(this.api_url + "editar/persona/0" , body, { observe: 'response' });
-      // return this.http.put<any>(this.url2 + "?nombre=Juan&apellido=Perez" ,null) 
   }
+
+
+
+  // obtener datos desde el login component
+  myMethod$: Observable<any>;
+  private myMethodSubject = new BehaviorSubject<any>("");
+
+  myMethod(data:any) {
+      console.log(data); // I have data! Let's return it so subscribers can use it!
+      // we can do stuff with data if we want
+      this.myMethodSubject.next(data);
+  }
+
   
 }

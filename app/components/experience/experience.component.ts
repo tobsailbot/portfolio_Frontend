@@ -7,7 +7,10 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./experience.component.css']
 })
 
+
 export class ExperienceComponent implements OnInit {
+
+ 
 
   data_ok = false;
 
@@ -24,9 +27,18 @@ export class ExperienceComponent implements OnInit {
     };
 
   portfolio_project:any;
-  constructor(private portfolioData:PortfolioService) { }
+
+  is_logged:any = false;
+  constructor(private portfolioData:PortfolioService) {
+    this.portfolioData.myMethod$.subscribe((data) => {
+      this.is_logged = data;
+  }
+  );
+  }
+
 
   ngOnInit(): void {
+
 
     this.portfolioData.getExp().subscribe(data =>{
 
@@ -90,4 +102,7 @@ export class ExperienceComponent implements OnInit {
   cancelEdit(){
     this.hide = false;
   }
+
+
+
 }

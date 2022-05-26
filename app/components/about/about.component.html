@@ -108,7 +108,7 @@
             <br>
             <br>
 
-              <button style=" margin-left:80%;" class="btn btn-primary btn-icon" type="button" *ngIf="!hide" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+              <button style=" margin-left:80%;" class="btn btn-primary btn-icon" type="button" *ngIf="!hide && is_logged" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
               <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary" type="button" *ngIf="hide" (click)="updateButton()">Guardar</button>
               <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary cancel-btn" type="button" *ngIf="hide" (click)="cancelEdit()">Cancelar</button>
 
