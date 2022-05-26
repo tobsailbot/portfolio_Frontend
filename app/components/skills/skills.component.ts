@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
-import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation,rotateAnimation,} from 'angular-animations';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
 
 @Component({
   selector: 'app-skills',
@@ -9,30 +9,28 @@ import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation,rotateAnimation,} from 
   animations: [
     fadeInOnEnterAnimation({ duration: 600 }),
     fadeOutOnLeaveAnimation({ duration: 600 }),
-    rotateAnimation({ duration: 10000, degrees: 360*10}),
   ]
 })
 
 export class SkillsComponent implements OnInit {
 
 
+  data_ok = false; // verifica si los datos llegan del server 200 = OK
 
-  data_ok = false;
+  hide = false; // oculta o muestra el menu de edicion de skills
 
-  hide = false;
+  skills_arr:any; // variable obtenida del servidor GET request
 
-  skills_arr:any;
+  new_skill:any = {}; // variable para agregar un nuevo skill
 
-  new_skill:any = {};
+  is_logged:any = false; // verifica si esta logueado en el login component
 
-  is_logged:any = false;
-
-  loading = false;
+  uploading:any = false; // si está enviando datos al servidor
   
   constructor(private portfolioData:PortfolioService) {
     this.portfolioData.myMethod$.subscribe((data) => {
       this.is_logged = data;
-    }
+      }
     );
   }
 
@@ -59,13 +57,14 @@ export class SkillsComponent implements OnInit {
       if (this.skills_arr.length === 0){ // si no hay skills
         console.log('No Skills...');
       }
-      
     }); 
-    
   }
 
 
   onSubmit(event:any){
+
+    this.uploading = true;
+
     const formulario = event.target; // obtener el formulario
      for (let i = 0; i < formulario.length; i++) {
        if(formulario[i].type === "text" || formulario[i].type === "number"){
@@ -86,6 +85,7 @@ export class SkillsComponent implements OnInit {
           this.ngOnInit();
           console.log('Skills updated.. ' + data.status);
           this.hide = false;
+          this.uploading = false;
     });
   }
 
@@ -99,15 +99,9 @@ export class SkillsComponent implements OnInit {
     this.portfolioData.deleteSkill(this.skills_arr[i].id).subscribe(data =>{
           this.ngOnInit();
           console.log('Skill deleted...');
-          this.loading = false;
     });
   }
 
-  animState = false;
-
-  animDone() {
-    this.animState = !this.animState;
-  }
 
   editVal(){
     this.hide = true;
