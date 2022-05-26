@@ -37,7 +37,7 @@
 
           <!-------------  Boton de edicion -------------->
             <div align="right"> 
-              <button class="btn btn-primary btn-icon" type="button" *ngIf="!hide " [@fadeInOnEnter] style="margin-right: 10px;cursor: pointer;" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+              <button class="btn btn-primary btn-icon" type="button" *ngIf="!hide && is_logged" [@fadeInOnEnter] style="margin-right: 10px;cursor: pointer;" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
           </div>
 
 

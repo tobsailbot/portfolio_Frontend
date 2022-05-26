@@ -42,7 +42,6 @@ export class AppComponent {
   }
 
   receiveData(event:any) {
-    console.log(event);
     this.login_comp = !this.login_comp;
     this.is_user_logged_in = true;
   }

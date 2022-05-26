@@ -52,12 +52,6 @@ export class EducationComponent implements OnInit {
         this.edu_arr.push(data.body[i]);
       }
 
-      // si no hay Education, se muestra un mensaje
-      if (this.edu_arr.length === 0){
-        this.hide = true;
-        console.log('No Education...');
-      }
-
       this.portfolio_project = data.body[0];
     });
   }

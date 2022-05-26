@@ -52,12 +52,6 @@ export class ProjectsComponent implements OnInit {
         //console.log(this.proj_arr.length);
       }
 
-      // si no hay proyectos, se muestra un mensaje
-      if (this.proj_arr.length === 0){
-        this.hide = true;
-        console.log('No Projects...');
-      }
-
       this.portfolio_project = data.body[0];
 
     }); 

@@ -56,12 +56,6 @@ export class ExperienceComponent implements OnInit {
         this.exp_arr.push(data.body[i]);
       }
 
-      // si no hay experiencias, se muestra un mensaje
-      if (this.exp_arr.length === 0){
-        this.hide = true;
-        console.log('No Experiencia...');
-      }
-
       this.portfolio_project = data.body[0];
     });
   }

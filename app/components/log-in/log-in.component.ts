@@ -18,7 +18,6 @@ constructor(private portfolioData:PortfolioService) { }
 
   login_arr:any = {};
 
-
   login_status:any;
 
   @Output() loginEvent = new EventEmitter<boolean>();
