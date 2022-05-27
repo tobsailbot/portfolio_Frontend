@@ -37,11 +37,11 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary erase-btn" *ngIf="hide" id={{item.id}} style="float: right;cursor: pointer;" (click)="delExpBtn($event)"><mat-icon>delete</mat-icon></button>
+      <button class="btn btn-primary erase-btn" *ngIf="hide" id={{item.id}} style="float: right;cursor: pointer;" (click)="delExpBtn($event)" [@fadeInOnEnter]><mat-icon>delete</mat-icon></button>
     </div>
     
 <!-------  Experience POST Input  -------->
-    <div class="card" *ngIf="hide" style="margin-top: 25px;" >
+    <div class="card" *ngIf="hide" style="margin-top: 25px;" [@fadeInOnEnter]>
       <strong class="h6 text-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;padding-top: 10px;" >Crear nueva experiencia</strong>
       <div class="row">
         <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <button *ngIf="!hide && data_ok && is_logged" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
+    <button *ngIf="!hide && data_ok && is_logged" style="margin-left:85%; margin-top:10px;" class="btn btn-primary btn-icon" (click)="editVal()" [@fadeInOnEnter] [@fadeOutOnLeave]> <mat-icon>create</mat-icon> </button>
 
 
   </div>

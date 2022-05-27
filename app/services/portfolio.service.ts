@@ -10,8 +10,8 @@ export class PortfolioService {
 
 
   // Portfolio API
-  //api_url:string = "https://heroku-argentina.herokuapp.com/";
-  api_url:string = "http://localhost:8080/";
+  api_url:string = "https://heroku-argentina.herokuapp.com/";
+  //api_url:string = "http://localhost:8080/";
 
   // Login status
   is_logged:any;
