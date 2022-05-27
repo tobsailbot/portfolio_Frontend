@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.css']
+  styleUrls: ['./experience.component.css'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 600 }),
+    fadeOutOnLeaveAnimation({ duration: 600 }),
+  ]
 })
 
+
 export class ExperienceComponent implements OnInit {
+
+ 
 
   data_ok = false;
 
@@ -24,9 +32,18 @@ export class ExperienceComponent implements OnInit {
     };
 
   portfolio_project:any;
-  constructor(private portfolioData:PortfolioService) { }
+
+  is_logged:any = false;
+  constructor(private portfolioData:PortfolioService) {
+    this.portfolioData.myMethod$.subscribe((data) => {
+      this.is_logged = data;
+  }
+  );
+  }
+
 
   ngOnInit(): void {
+
 
     this.portfolioData.getExp().subscribe(data =>{
 
@@ -42,12 +59,6 @@ export class ExperienceComponent implements OnInit {
       // seleccionar el index del array de datos
       for (let i in data.body){ 
         this.exp_arr.push(data.body[i]);
-      }
-
-      // si no hay experiencias, se muestra un mensaje
-      if (this.exp_arr.length === 0){
-        this.hide = true;
-        console.log('No Experiencia...');
       }
 
       this.portfolio_project = data.body[0];
@@ -90,4 +101,7 @@ export class ExperienceComponent implements OnInit {
   cancelEdit(){
     this.hide = false;
   }
+
+
+
 }

@@ -4,7 +4,7 @@
   <div class="profile-page">
   <div class="wrapper">
   <div class="page-header page-header-small" filter-color="green">
-    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/images/cc-bg-1.jpg')"></div>
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/images/cc-bg-2.jpg')"></div>
     <div class="container">
       <div class="content-center">
         <div class="cc-profile-image" *ngIf="portfolio_persona && !hide"><a href="#"><img (error)="handleMissingImage($event)" src={{portfolio_persona.profile_image_url}} alt="Image"/></a></div>
@@ -68,7 +68,7 @@
 
             <div class="h4 mt-0 title">Sobre mi</div>
             <p *ngIf="!hide">{{portfolio_persona.sobre_mi}}</p>
-            <input class="col-sm-8" *ngIf="hide" type="text" name="sobre_mi" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.sobre_mi}}/>
+            <input class="col-sm-8" *ngIf="hide" type="text" name="sobre_mi" (focusout)="onKey($event)" value={{portfolio_persona.sobre_mi}}/>
             
           </div>
         </div>
@@ -80,37 +80,38 @@
             <div class="row">
               <div class="col-sm-4"><strong class="text-uppercase">Edad</strong></div>
               <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.edad}}</div>
-              <input class="col-sm-8" *ngIf="hide" type="text" name="edad" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.edad}}/>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="edad" (focusout)="onKey($event)" value={{portfolio_persona.edad}}/>
             </div>
 
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
               <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.email}}</div>
-              <input class="col-sm-8" *ngIf="hide" type="text" name="email" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.email}}/>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="email" (focusout)="onKey($event)" value={{portfolio_persona.email}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Teléfono:</strong></div>
               <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.telefono}}</div>
-              <input class="col-sm-8" *ngIf="hide" type="text" name="telefono" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.telefono}}/>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="telefono" (focusout)="onKey($event)" value={{portfolio_persona.telefono}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Ubicación:</strong></div>
               <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.ubicacion}}</div>
-              <input class="col-sm-8" *ngIf="hide" type="text" name="ubicacion" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.ubicacion}}/>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="ubicacion" (focusout)="onKey($event)" value={{portfolio_persona.ubicacion}}/>
             </div>
             <div class="row mt-3">
               <div class="col-sm-4"><strong class="text-uppercase">Idioma principal:</strong></div>
               <div class="col-sm-8" *ngIf="!hide">{{portfolio_persona.idioma}}</div>
-              <input class="col-sm-8" *ngIf="hide" type="text" name="idioma" (focusout)="onKey($event)" onClick="this.select();" value={{portfolio_persona.idioma}}/>
+              <input class="col-sm-8" *ngIf="hide" type="text" name="idioma" (focusout)="onKey($event)" value={{portfolio_persona.idioma}}/>
 
             <div></div>
 
             <br>
             <br>
-
-              <button style=" margin-left:80%;" class="btn btn-primary btn-icon" type="button" *ngIf="!hide" (click)="editVal()"> <mat-icon>create</mat-icon> </button>
-              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary" type="button" *ngIf="hide" (click)="updateButton()">Guardar</button>
-              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary cancel-btn" type="button" *ngIf="hide" (click)="cancelEdit()">Cancelar</button>
+              
+              <button style=" margin-left:80%;" class="btn btn-primary btn-icon" type="button" *ngIf="!hide && is_logged" (click)="editVal()" > <mat-icon [@fadeInOnEnter]>create</mat-icon> </button>
+              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary" type="button" *ngIf="hide" (click)="updateButton()" [@fadeInOnEnter]>Guardar</button>
+              <button style=" margin-left:80%;margin-top: 10px;" class="btn btn-primary cancel-btn" type="button" *ngIf="hide" (click)="cancelEdit()" [@fadeInOnEnter]>Cancelar</button>
+              <div style="margin-left:65%;position: absolute;margin-top: 75px;" class="spin-icon" *ngIf="uploading"> <mat-icon [@fadeInOnEnter]>loop</mat-icon></div>
 
             </div>
           </div>

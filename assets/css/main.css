@@ -26,6 +26,23 @@
  */
 
 
+.spin-icon{
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  margin: auto; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+}
+
 
 
 .load-container{
@@ -1392,6 +1409,8 @@ mat-icon{
 
 .btn-primary.btn-icon {
   border-radius: 100px;
+  padding: 0;
+  margin: auto;
   }
   
 
@@ -2707,7 +2726,7 @@ body {
   .navbar .button-dropdown .navbar-toggler-bar:nth-child(2) {
     width: 17px; }
   .navbar.navbar-transparent {
-    background-color: green !important;
+    background-color: hsl(126, 44%, 28%) !important;
     box-shadow: none;
     color: #FFFFFF;
     padding-top: 20px; }
@@ -4246,6 +4265,7 @@ Created using IcoMoon - icomoon.io
     color: #FFFFFF; }
 
 @media screen and (max-width: 991px) {
+
   .sidebar-collapse .navbar-collapse {
     position: fixed;
     display: block;
@@ -4288,6 +4308,7 @@ Created using IcoMoon - icomoon.io
     .sidebar-collapse .navbar-collapse .dropdown-menu .dropdown-item {
       color: #FFFFFF; }
   .sidebar-collapse .navbar .navbar-nav {
+    display: relative;
     margin-top: 53px; }
     .sidebar-collapse .navbar .navbar-nav .nav-link {
       padding-top: 0.75rem;
@@ -4377,6 +4398,11 @@ Created using IcoMoon - icomoon.io
     animation: bottombar-x 500ms 0s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards; }
+
+  .nav-item a{
+    display: none;
+  }
+  
   @keyframes topbar-x {
     0% {
       top: 0px;

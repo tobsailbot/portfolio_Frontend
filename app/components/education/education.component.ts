@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+  styleUrls: ['./education.component.css'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 600 }),
+    fadeOutOnLeaveAnimation({ duration: 600 }),
+  ]
 })
 export class EducationComponent implements OnInit {
 
@@ -23,7 +28,16 @@ export class EducationComponent implements OnInit {
     };
 
   portfolio_project:any;
-  constructor(private portfolioData:PortfolioService) {  }
+  
+  is_logged:any = false;
+  
+  constructor(private portfolioData:PortfolioService) {
+    this.portfolioData.myMethod$.subscribe((data) => {
+      this.is_logged = data;
+    }
+    );
+  }
+
 
   ngOnInit(): void {
 
@@ -41,12 +55,6 @@ export class EducationComponent implements OnInit {
       // seleccionar el index del array de datos
       for (let i in data.body){ 
         this.edu_arr.push(data.body[i]);
-      }
-
-      // si no hay Education, se muestra un mensaje
-      if (this.edu_arr.length === 0){
-        this.hide = true;
-        console.log('No Education...');
       }
 
       this.portfolio_project = data.body[0];

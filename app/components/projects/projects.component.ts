@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
+
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  styleUrls: ['./projects.component.css'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 600 }),
+    fadeOutOnLeaveAnimation({ duration: 600 }),
+  ]
 })
 
 export class ProjectsComponent implements OnInit {
@@ -23,7 +29,15 @@ export class ProjectsComponent implements OnInit {
     };
 
   portfolio_project:any;
-  constructor(private portfolioData:PortfolioService) { }
+
+  is_logged:any = false;
+  
+  constructor(private portfolioData:PortfolioService) {
+    this.portfolioData.myMethod$.subscribe((data) => {
+      this.is_logged = data;
+    }
+    );
+  }
 
   ngOnInit(): void {
 
@@ -42,12 +56,6 @@ export class ProjectsComponent implements OnInit {
       for (let i in data.body){ 
         this.proj_arr.push(data.body[i]);
         //console.log(this.proj_arr.length);
-      }
-
-      // si no hay proyectos, se muestra un mensaje
-      if (this.proj_arr.length === 0){
-        this.hide = true;
-        console.log('No Projects...');
       }
 
       this.portfolio_project = data.body[0];

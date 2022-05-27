@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.css'],
+  animations: [
+    fadeInOnEnterAnimation({ duration: 600 }),
+    fadeOutOnLeaveAnimation({ duration: 600 }),
+  ]
 })
 export class AboutComponent implements OnInit {
   
@@ -15,7 +20,17 @@ export class AboutComponent implements OnInit {
   bodyPut:any = {};
 
   portfolio_persona:any;
-  constructor(private portfolioData:PortfolioService) { }
+
+  is_logged:any = false;
+
+  uploading:any = false; // si está enviando datos al servidor
+  
+  constructor(private portfolioData:PortfolioService) {
+    this.portfolioData.myMethod$.subscribe((data) => {
+      this.is_logged = data;
+    }
+    );
+  }
 
   ngOnInit(): void {
 
@@ -35,12 +50,9 @@ export class AboutComponent implements OnInit {
 
   
   onKey(event:any): void{
-    
-
     this.bodyPut= this.portfolio_persona;
     const key = event.target.name as string;
     this.bodyPut[key as keyof typeof this.bodyPut] = event.target.value;
-
   }
 
   editVal(){
@@ -49,6 +61,8 @@ export class AboutComponent implements OnInit {
 
 
   updateButton(): void{
+
+    this.uploading = true;
     
     this.portfolioData.putPersona(this.bodyPut).subscribe(data =>{
       
@@ -57,6 +71,7 @@ export class AboutComponent implements OnInit {
           console.log('Persona updated...');
           this.ngOnInit();
         }     
+      this.uploading = false;
     });
   }
 
