@@ -11,7 +11,6 @@ export class PortfolioService {
 
   // Portfolio API
   api_url:string = "https://heroku-argentina.herokuapp.com/";
-  //api_url:string = "http://localhost:8080/";
 
   // Login status
   is_logged:any;
@@ -19,6 +18,7 @@ export class PortfolioService {
   constructor(private http:HttpClient) {
     this.myMethod$ = this.myMethodSubject.asObservable();
    }
+
 
 
   // GET
@@ -108,5 +108,6 @@ export class PortfolioService {
       this.myMethodSubject.next(data);
   }
 
-  
+
+ 
 }

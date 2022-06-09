@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animations';
 
+
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -12,8 +13,8 @@ import { fadeInOnEnterAnimation, fadeOutOnLeaveAnimation} from 'angular-animatio
   ]
 })
 
-export class SkillsComponent implements OnInit {
 
+export class SkillsComponent implements OnInit {
 
   data_ok = false; // verifica si los datos llegan del server 200 = OK
 
@@ -34,14 +35,13 @@ export class SkillsComponent implements OnInit {
     );
   }
 
+
   ngOnInit(): void {
 
     this.portfolioData.getSkill().subscribe(data =>{
-
       if (data.status === 200){ // si la respuesta es correcta
         this.data_ok = true;
       }
-      
       console.log('Getting Skills data...');
 
       this.skills_arr = [];
@@ -59,7 +59,6 @@ export class SkillsComponent implements OnInit {
       }
     }); 
   }
-
 
   onSubmit(event:any){
 

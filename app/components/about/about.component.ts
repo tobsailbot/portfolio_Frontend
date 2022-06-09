@@ -46,6 +46,8 @@ export class AboutComponent implements OnInit {
       this.portfolio_persona = data.body[0];
       this.bodyPut = this.portfolio_persona;
     });
+
+    this.keepAwake();
   }
 
   
@@ -83,5 +85,14 @@ export class AboutComponent implements OnInit {
   cancelEdit(){
     this.hide = false;
   }
+
+   // keep awake every 5 minutes
+
+  keepAwake() {
+    
+      setInterval(() => {this.portfolioData.getSkill().subscribe(data =>{console.log('keep alive');})}, 10000);
+      return true;
+  }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { PortfolioService } from './services/portfolio.service';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +45,11 @@ export class AppComponent {
   receiveData(event:any) {
     this.login_comp = !this.login_comp;
     this.is_user_logged_in = true;
+    console.log(event);
+  }
+
+  logoutBtn() {
+    window.location.reload();
   }
   
 
